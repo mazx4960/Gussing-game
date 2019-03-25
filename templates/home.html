@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <h1>Guessing Game</h1>
+
+    <table>
+        {% for question in questions %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('view', id=question['id']) }}">
+                        {{ question['text'] }}
+                    </a>
+                </td>
+                <td>
+                    <form action="{{ url_for('delete', id=question['id']) }}"
+                          method="post">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div class="add">
+
+        <h2>Add a Question</h2>
+
+        <form action="{{ url_for('add') }}" method="POST">
+            <table>
+                <tr>
+                    <th>Question:</th>
+                    <td><input type="text" name="text"></td>
+                </tr>
+                <tr>
+                    <th>Correct Answer:</th>
+                    <td><input type="text" name="answer"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><p><input type="submit"></p></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+</body>
+</html>

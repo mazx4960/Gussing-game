@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <h1>Guessing Game</h1>
+
+    {% if guess == answer %}
+
+        <h2 id="correct">Correct</h2>
+
+        <p>Congratulations, you guessed the answer exactly!</p>
+
+    {% else %}
+
+        <h2 id="wrong">Wrong</h2>
+
+        {% if guess > answer %}
+
+            <p>Your guess was too high.</p>
+
+        {% else %}
+
+            <p>Your guess was too low.</p>
+
+        {% endif %}
+
+    {% endif %}
+
+    <p><a href="{{ url_for('home') }}">Go home</a></p>
+
+</body>
+</html>
